@@ -3,25 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>智慧鎖系統文件補完工具</title>
+    <title>AI Locksmith Dispatch Questions</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="topbar">
       <div>
-        <p class="eyebrow">System Document Completion Web App</p>
-        <h1>智慧鎖派工平台開發前置需求確認</h1>
+        <p class="eyebrow">開發前置需求確認工具</p>
+        <h1>AI Locksmith Dispatch 問題訪談 Web App</h1>
+        <p class="subtitle">給客服、派工、現場鎖匠、品牌商、會計填寫，協助 AI specialist 補完 system documents。</p>
       </div>
-      <button id="exportBtn" class="primary">匯出補完報告</button>
+      <div class="top-actions">
+        <button id="saveBtn" class="ghost">儲存進度</button>
+        <button id="exportBtn" class="primary">匯出報告</button>
+      </div>
     </header>
 
     <main class="layout">
       <aside class="sidebar">
-        <h2>角色</h2>
-        <div id="roleList" class="role-list"></div>
+        <section>
+          <h2>1. 選擇填寫角色</h2>
+          <div id="roleList" class="role-list"></div>
+        </section>
 
         <section class="progress">
-          <h2>文件補完進度</h2>
+          <h2>2. 文件補完進度</h2>
           <div id="docProgress"></div>
         </section>
       </aside>
@@ -29,11 +35,11 @@
       <section class="workspace">
         <div class="intro">
           <div>
-            <p class="eyebrow">正式開發前使用</p>
-            <h2 id="roleTitle">請選擇角色開始訪談</h2>
+            <p class="eyebrow">不是正式派工系統，也不是 MVP</p>
+            <h2 id="roleTitle">請先選擇角色</h2>
           </div>
           <p id="roleDescription">
-            此工具不是派工平台 MVP，而是用來收集現場流程、痛點、異常情境與帳務規則，協助 AI specialist 補完 system documents。
+            這個 Web App 是正式開發前的 system document completion tool，用來收集真實流程、痛點、例外狀況與未來需求。
           </p>
         </div>
 
@@ -41,24 +47,35 @@
       </section>
 
       <aside class="insights">
-        <h2>待決策與衝突</h2>
-        <div id="insightList" class="insight-list"></div>
+        <section>
+          <h2>待決策與衝突提醒</h2>
+          <div id="insightList" class="insight-list"></div>
+        </section>
 
-        <h2>輸出對應</h2>
-        <div class="mapping">
-          <span>ProblemCard</span>
-          <span>WorkOrder</span>
-          <span>Dispatch</span>
-          <span>Pricing</span>
-          <span>Exception</span>
-          <span>Accounting</span>
-          <span>Inventory</span>
-          <span>RBAC</span>
-        </div>
+        <section>
+          <h2>回填文件</h2>
+          <div id="mappingList" class="mapping"></div>
+        </section>
+
+        <section class="help">
+          <h2>填寫方式</h2>
+          <p>請寫「現在怎麼做」、「最常出錯在哪裡」、「希望未來系統怎麼幫忙」。答案越實際，AI specialist 越能補完整文件。</p>
+        </section>
       </aside>
     </main>
+
+    <dialog id="reportDialog">
+      <div class="dialog-head">
+        <h2>匯出報告預覽</h2>
+        <button id="closeDialog" class="icon-btn">×</button>
+      </div>
+      <textarea id="reportOutput" readonly></textarea>
+      <div class="dialog-actions">
+        <button id="copyReport" class="ghost">複製文字</button>
+        <button id="downloadReport" class="primary">下載 Markdown</button>
+      </div>
+    </dialog>
 
     <script src="script.js"></script>
   </body>
 </html>
-
